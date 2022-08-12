@@ -1,0 +1,77 @@
+#Python 3
+#'G' = Green frog
+#'B' = Brown frog
+#'-' = Empty stone
+positions = ['G', 'G', 'G', '-', 'B', 'B', 'B']
+list1 = '[ 0 , 1 ,  2 ,  3 ,  4 ,  5 ,  6 ]'
+final = ['B', 'B', 'B', '-', 'G', 'G', 'G']
+print(positions)
+print(list1)
+
+while positions != final:
+    inp = input("Press q to quit else \nEnter position of piece: ")
+    while True:
+        
+        if inp == 'q':   
+                     
+            break
+        else:
+            inp = int(inp)
+        
+        if (inp>=0 and inp<=6) :
+            break
+        else:
+            print(positions)
+            print(list1)
+            inp = input("Invalid move, Enter a number between 0 to 6 or press 'q' to quit- ")
+
+    if inp == 'q':
+        print("")
+        print("You Lose")
+        break
+
+            
+    if positions[inp]=='G':
+        a = inp +1
+        b = inp +2
+        if positions[a]=="-" and a<=6:
+            #pos2= positions[inp]
+            positions[inp], positions[a] = positions[a], positions[inp]
+            print("")
+            print(positions)
+            print(list1)
+        elif positions[b]=="-" and b<=6 and (positions[a]=='B' or positions[a]=='G'):
+            positions[inp], positions[b] = positions[b], positions[inp]
+            print("")
+            print(positions)
+            print(list1)
+        else:
+            print("")
+            print('Invalid Move')
+            print(positions)
+            print(list1)
+
+    elif positions[inp]=='B':
+        a = inp -1
+        b = inp -2
+        if positions[a]=="-" and a>=0:
+            #pos2= positions[inp]
+            positions[inp], positions[a] = positions[a], positions[inp]
+            print("")
+            print(positions)
+            print(list1)
+        elif positions[b]=="-" and b>=0 and (positions[a]=='B' or positions[a]=='G'):
+            positions[inp], positions[b] = positions[b], positions[inp]
+            print("")
+            print(positions)
+            print(list1)
+        else:
+            print("")
+            print('Invalid Move')
+            print(positions)
+            print(list1)
+    if positions == final:
+        print("")
+        print("Hurrayyy!!! ")
+        print("You Win")
+
